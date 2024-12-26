@@ -35,19 +35,19 @@ void addUser() {
     char name[NAME_LENGTH];
     int age;
 
-    printf("Nom complet (prénom et nom) : ");
+    printf("Nom complet (prÃ©nom et nom) : ");
     getchar();
     fgets(name, NAME_LENGTH, stdin);
-    name[strcspn(name, "\n")] = 0; // Remove trailing newline
+    name[strcspn(name, "\n")] = 0; 
 
     for (int i = 0; i < userCount; i++) {
         if (strcmp(users[i].name, name) == 0) {
-            printf("Erreur : Le nom '%s' est déjà utilisé. Veuillez apporter une petite modification.\n", name);
+            printf("Erreur : Le nom '%s' est dÃ©jÃ  utilisÃ©. Veuillez apporter une petite modification.\n", name);
             return;
         }
     }
 
-    printf("Âge : ");
+    printf("Ã‚ge : ");
     scanf("%d", &age);
 
     users[userCount].id = nextUserId++;
@@ -55,7 +55,7 @@ void addUser() {
     users[userCount].age = age;
     userCount++;
 
-    printf("Utilisateur ajouté : %s, ID : %d\n", name, nextUserId - 1);
+    printf("Utilisateur ajoutÃ© : %s, ID : %d\n", name, nextUserId - 1);
 }
 
 void addPost() {
@@ -71,7 +71,7 @@ void addPost() {
     printf("Nom complet de l'utilisateur : ");
     getchar();
     fgets(name, NAME_LENGTH, stdin);
-    name[strcspn(name, "\n")] = 0; // Remove trailing newline
+    name[strcspn(name, "\n")] = 0; 
 
     for (int i = 0; i < userCount; i++) {
         if (strcmp(users[i].name, name) == 0) {
@@ -81,31 +81,31 @@ void addPost() {
     }
 
     if (userId == -1) {
-        printf("Erreur : Utilisateur non trouvé.\n");
+        printf("Erreur : Utilisateur non trouvÃ©.\n");
         return;
     }
 
     printf("Contenu de la publication : ");
     fgets(content, POST_LENGTH, stdin);
-    content[strcspn(content, "\n")] = 0; // Remove trailing newline
+    content[strcspn(content, "\n")] = 0; 
 
     posts[postCount].id = nextPostId++;
     posts[postCount].userId = userId;
     strcpy(posts[postCount].content, content);
     postCount++;
 
-    printf("Publication ajoutée avec succès.\n");
+    printf("Publication ajoutÃ©e avec succÃ¨s.\n");
 }
 
 void displayUsers() {
     if (userCount == 0) {
-        printf("Aucun utilisateur à afficher.\n");
+        printf("Aucun utilisateur Ã  afficher.\n");
         return;
     }
 
     printf("\nListe des utilisateurs :\n");
     for (int i = 0; i < userCount; i++) {
-        printf("ID : %d, Nom : %s, Âge : %d\n", users[i].id, users[i].name, users[i].age);
+        printf("ID : %d, Nom : %s, Ã‚ge : %d\n", users[i].id, users[i].name, users[i].age);
     }
 }
 
@@ -116,7 +116,7 @@ void displayUserPosts() {
     printf("Nom complet de l'utilisateur : ");
     getchar();
     fgets(name, NAME_LENGTH, stdin);
-    name[strcspn(name, "\n")] = 0; // Remove trailing newline
+    name[strcspn(name, "\n")] = 0; 
 
     for (int i = 0; i < userCount; i++) {
         if (strcmp(users[i].name, name) == 0) {
@@ -126,7 +126,7 @@ void displayUserPosts() {
     }
 
     if (userId == -1) {
-        printf("Erreur : Utilisateur non trouvé.\n");
+        printf("Erreur : Utilisateur non trouvÃ©.\n");
         return;
     }
 
@@ -156,13 +156,13 @@ void saveData() {
     }
 
     fclose(file);
-    printf("Données sauvegardées. Au revoir !\n");
+    printf("DonnÃ©es sauvegardÃ©es. Au revoir !\n");
 }
 
 void loadData() {
     FILE *file = fopen("data.txt", "r");
     if (!file) {
-        printf("Aucun fichier de sauvegarde trouvé.\n");
+        printf("Aucun fichier de sauvegarde trouvÃ©.\n");
         return;
     }
 
@@ -187,7 +187,7 @@ int main() {
     loadData();
 
     do {
-        printf("\n=== Mini Réseau Social ===\n");
+        printf("\n=== Mini RÃ©seau Social ===\n");
         printf("1. Ajouter un utilisateur\n");
         printf("2. Ajouter une publication\n");
         printf("3. Afficher les utilisateurs\n");
@@ -213,7 +213,7 @@ int main() {
                 saveData();
                 break;
             default:
-                printf("Option invalide. Veuillez réessayer.\n");
+                printf("Option invalide. Veuillez rÃ©essayer.\n");
         }
     } while (choice != 5);
 
